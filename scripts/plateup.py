@@ -41,6 +41,9 @@ def plateup(target, part_type, usage = None):
     target_dir = parts_dir + '/' + target_dirs[part_type]
     source_dir1 = source_dirs[part_type]
     source_dir2 = top_dir + source_dirs[part_type]
+
+    if not os.path.isdir(target_dir):
+        os.makedirs(target_dir)
     #
     # Loop through source directories
     #
@@ -49,8 +52,6 @@ def plateup(target, part_type, usage = None):
     for dir in [source_dir1, source_dir2]:
         if not os.path.isdir(dir):
             continue
-        if not os.path.isdir(target_dir):
-            os.makedirs(target_dir)
         #
         # Make the deps dir
         #
